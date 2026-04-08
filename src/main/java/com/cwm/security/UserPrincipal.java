@@ -2,6 +2,7 @@ package com.cwm.security;
 
 import com.cwm.enums.Active;
 import com.cwm.model.Users;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +11,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 
+@Getter
 public class UserPrincipal implements UserDetails {
 
     private final Users user;
@@ -41,10 +43,6 @@ public class UserPrincipal implements UserDetails {
     public boolean isEnabled() {
         Active isActive = user.getStatus();
         return isActive == Active.ACTIVE;
-    }
-
-    public Users getUser() {
-        return user;
     }
 
 }

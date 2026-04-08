@@ -45,6 +45,9 @@ public class JWTLoginStrategy implements LoginStrategy {
                         ));
 
         UserPrincipal principal = (UserPrincipal) auth.getPrincipal();
+        if(principal == null) {
+            throw new RuntimeException("Principal is null");
+        }
         Users user = principal.getUser();
 
         String token = jwtService.generateToken(user.getUsername());
