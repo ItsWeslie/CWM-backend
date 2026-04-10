@@ -1,11 +1,10 @@
-package com.cwm.service;
+package com.cwm.service.auth;
 
-import com.cwm.dto.AuthRequest;
-import com.cwm.dto.AuthResponse;
+import com.cwm.dto.auth.AuthRequest;
+import com.cwm.dto.auth.AuthResponse;
 import com.cwm.strategy.login.LoginStrategy;
 import com.cwm.strategy.login.LoginStrategyFactory;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package com.cwm.service;
+package com.cwm.service.auth;
 
-import com.cwm.dto.AuthResponse;
+import com.cwm.dto.auth.AuthResponse;
 import com.cwm.exception.InvalidTokenException;
 import com.cwm.exception.UserNotFoundException;
 import com.cwm.model.Users;

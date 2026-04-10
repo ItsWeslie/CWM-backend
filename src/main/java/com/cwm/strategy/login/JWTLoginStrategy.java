@@ -1,8 +1,8 @@
 package com.cwm.strategy.login;
 
-import com.cwm.api.LoginConstants;
-import com.cwm.dto.AuthRequest;
-import com.cwm.dto.AuthResponse;
+import com.cwm.api.LoginTypeConstants;
+import com.cwm.dto.auth.AuthRequest;
+import com.cwm.dto.auth.AuthResponse;
 import com.cwm.model.Users;
 import com.cwm.security.JWTService;
 import com.cwm.security.UserPrincipal;
@@ -17,7 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 
-@Service(LoginConstants.JWT)
+@Service(LoginTypeConstants.JWT)
 @RequiredArgsConstructor
 public class JWTLoginStrategy implements LoginStrategy {
 

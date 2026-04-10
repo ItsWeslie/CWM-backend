@@ -1,18 +1,21 @@
 package com.cwm.dto;
 
-import com.cwm.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AuthResponse {
-    private String username;
-    private Role role;
-    private String message;
-    private boolean isLoggedIn;
+public class PageResponse<T>{
+    private List<T> content;
+    private int page;
+    private int size;
+    private long totalElements;
+    private int totalPages;
+
 }

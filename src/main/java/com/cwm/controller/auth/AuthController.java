@@ -1,12 +1,12 @@
-package com.cwm.controller;
+package com.cwm.controller.auth;
 
 import com.cwm.api.APIConstants;
 import com.cwm.dto.APIResponse;
-import com.cwm.dto.AuthRequest;
-import com.cwm.dto.AuthResponse;
-import com.cwm.service.AuthValidateService;
-import com.cwm.service.LoginService;
-import com.cwm.service.LogoutService;
+import com.cwm.dto.auth.AuthRequest;
+import com.cwm.dto.auth.AuthResponse;
+import com.cwm.service.auth.AuthValidateService;
+import com.cwm.service.auth.LoginService;
+import com.cwm.service.auth.LogoutService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

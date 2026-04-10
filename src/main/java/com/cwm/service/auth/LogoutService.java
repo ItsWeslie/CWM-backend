@@ -1,4 +1,4 @@
-package com.cwm.service;
+package com.cwm.service.auth;
 
 import com.cwm.dto.APIResponse;
 import org.springframework.http.HttpHeaders;

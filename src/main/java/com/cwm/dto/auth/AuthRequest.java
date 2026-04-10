@@ -1,4 +1,4 @@
-package com.cwm.dto;
+package com.cwm.dto.auth;
 
 import jakarta.validation.constraints.NotBlank;
 

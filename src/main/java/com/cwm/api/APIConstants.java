@@ -22,7 +22,11 @@ public final class APIConstants {
 
     //Admin Endpoints
     public static final class Admin{
-        public static final String ADD_MEMBER = "/addMember";
+        public static final String MEMBER = APIConstants.ADMIN+"/members";
+        public static final String EVENT = APIConstants.ADMIN+"/events";
+        public static final String SUBSCRIPTION = APIConstants.ADMIN+"/subscriptions";
+
+
     }
 
     //Member Endpoints
