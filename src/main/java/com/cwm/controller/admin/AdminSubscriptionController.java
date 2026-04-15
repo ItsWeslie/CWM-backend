@@ -5,7 +5,7 @@ import com.cwm.dto.APIResponse;
 import com.cwm.dto.PageResponse;
 import com.cwm.dto.subscription.SubscriptionRequest;
 import com.cwm.dto.subscription.SubscriptionResponse;
-import com.cwm.service.adminService.AdminSubscriptionServiceImpl;
+import com.cwm.service.adminService.AdminSubscriptionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @PreAuthorize("hasRole('ADMIN')")
 public class AdminSubscriptionController {
 
-    private final AdminSubscriptionServiceImpl adminSubscriptionService;
+    private final AdminSubscriptionService adminSubscriptionService;
 
     @GetMapping
     public ResponseEntity<PageResponse<SubscriptionResponse>> getAllSubscriptions(@RequestParam(defaultValue = "0") int page,

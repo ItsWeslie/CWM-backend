@@ -5,7 +5,7 @@ import com.cwm.dto.APIResponse;
 import com.cwm.dto.PageResponse;
 import com.cwm.dto.event.EventRequest;
 import com.cwm.dto.event.EventResponse;
-import com.cwm.service.adminService.AdminEventServiceImpl;
+import com.cwm.service.adminService.AdminEventService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -20,30 +20,30 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AdminEventController {
 
-    private final AdminEventServiceImpl adminEventServiceImpl;
+    private final AdminEventService adminEventService;
 
     @GetMapping
     public ResponseEntity<PageResponse<EventResponse>> getAllEvents(@RequestParam(defaultValue = "0") int page,
                                                                     @RequestParam(defaultValue = "10") int size)
     {
         Pageable pageable = PageRequest.of(page, size);
-        return adminEventServiceImpl.getAllEvents(pageable);
+        return adminEventService.getAllEvents(pageable);
     }
 
     @PostMapping
     public ResponseEntity<APIResponse> createEvent(@Valid @RequestBody EventRequest eventRequest) {
-        return adminEventServiceImpl.createEvent(eventRequest);
+        return adminEventService.createEvent(eventRequest);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<APIResponse> deleteEvent(@PathVariable long id) {
-        return adminEventServiceImpl.deleteEvent(id);
+        return adminEventService.deleteEvent(id);
     }
 
     @PatchMapping("/{id}")
     public ResponseEntity<APIResponse> updateEvent(@PathVariable long id,
                                                    @Valid @RequestBody EventRequest eventRequest) {
-        return adminEventServiceImpl.updateEvent(id,eventRequest);
+        return adminEventService.updateEvent(id,eventRequest);
     }
 
 

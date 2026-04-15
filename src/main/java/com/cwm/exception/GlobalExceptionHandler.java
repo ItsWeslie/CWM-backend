@@ -1,6 +1,7 @@
 package com.cwm.exception;
 
 import com.cwm.dto.APIResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -8,11 +9,14 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @RestControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(UserNotFoundException.class)
@@ -60,10 +64,14 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    private ResponseEntity<APIResponse> handleIllegalArgumentException(IllegalArgumentException e) {
+    public ResponseEntity<APIResponse> handleIllegalArgumentException(IllegalArgumentException e) {
+        String message = Optional.ofNullable(e.getMessage())
+                .filter(msg -> !msg.isBlank())
+                .orElse("Invalid input, please try again");
+
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body(new APIResponse("Invalid input, please try again"));
+                .badRequest()
+                .body(new APIResponse(message));
     }
 
     @ExceptionHandler(Exception.class)
@@ -85,5 +93,21 @@ public class GlobalExceptionHandler {
         return ResponseEntity
                 .status(HttpStatus.FORBIDDEN)
                 .body(new APIResponse("Account is deactivated. Please contact support."));
+    }
+
+    @ExceptionHandler(PaymentNotFoundException.class)
+    private ResponseEntity<APIResponse> handlePaymentNotFoundException(PaymentNotFoundException e) {
+        return ResponseEntity.
+                status(HttpStatus.NOT_FOUND)
+                .body(new APIResponse(e.getMessage()));
+    }
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseEntity<APIResponse> handleMaxSizeException(
+            MaxUploadSizeExceededException e) {
+
+        return ResponseEntity
+                .badRequest()
+                .body(new APIResponse("File size must be less than 2MB."));
     }
 }

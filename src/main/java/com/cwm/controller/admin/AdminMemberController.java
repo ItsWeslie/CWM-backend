@@ -5,7 +5,7 @@ import com.cwm.dto.APIResponse;
 import com.cwm.dto.PageResponse;
 import com.cwm.dto.member.MemberRequest;
 import com.cwm.dto.member.MemberResponse;
-import com.cwm.service.adminService.AdminMemberServiceImpl;
+import com.cwm.service.adminService.AdminMemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @PreAuthorize("hasRole('ADMIN')")
 public class AdminMemberController {
 
-    private final AdminMemberServiceImpl adminMemberService;
+    private final AdminMemberService adminMemberService;
 
     @GetMapping
     public ResponseEntity<PageResponse<MemberResponse>> getAllMembers(@RequestParam(defaultValue = "0") int page,

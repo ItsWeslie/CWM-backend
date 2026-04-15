@@ -25,6 +25,8 @@ public final class APIConstants {
         public static final String MEMBER = APIConstants.ADMIN+"/members";
         public static final String EVENT = APIConstants.ADMIN+"/events";
         public static final String SUBSCRIPTION = APIConstants.ADMIN+"/subscriptions";
+        public static final String PAYMENT = APIConstants.ADMIN+"/payments";
+        public static final String REPORTS      = APIConstants.ADMIN + "/reports";
 
 
     }
@@ -32,5 +34,8 @@ public final class APIConstants {
     //Member Endpoints
     public static final class Member{
         public static final String MEMBER_DASHBOARD = APIConstants.MEMBER + "/dashboard";
+        public static final String PROFILE = MEMBER_DASHBOARD+"/profile";
+        public static final String SUBSCRIPTION = MEMBER_DASHBOARD+"/subscription";
+        public static final String EVENT = MEMBER_DASHBOARD+"/event";
     }
 }
